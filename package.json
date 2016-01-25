@@ -1,0 +1,27 @@
+{
+  "name": "request-header-microservice",
+  "version": "1.0.0",
+  "description": "Request header microservice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hexjelly/request-header-microservice.git"
+  },
+  "author": "Hexjelly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hexjelly/request-header-microservice/issues"
+  },
+  "homepage": "https://github.com/hexjelly/request-header-microservice#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "rewire": "^2.5.1",
+    "supertest": "^1.1.0"
+  }
+}
