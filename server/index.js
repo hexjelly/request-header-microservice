@@ -3,10 +3,15 @@
 
 var express = require('express');
 var path = require('path');
+var UAParser = require('ua-parser-js');
 var app = express();
 
-function getUserAgentHeaders (headers) {
-  return headers;
+function getUserAgentHeaders (req) {
+  var ip = req.ip || null;
+  var parser = new UAParser();
+  parser.setUA(req.headers['user-agent']);
+  var lang = req.headers['accept-language'].split(',')[0] || null;
+  return { 'ip': ip, 'os': parser.getOS(), 'lang': lang };
 }
 
 
@@ -15,7 +20,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/api', function (req, res) {
-  res.json(getUserAgentHeaders(req.headers));
+  res.json(getUserAgentHeaders(req));
 });
 
 module.exports = app;
