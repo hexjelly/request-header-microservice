@@ -7,11 +7,13 @@ var UAParser = require('ua-parser-js');
 var app = express();
 
 function getUserAgentHeaders (req) {
-  var ip = req.ip || null;
+  var ip = req.ip;
   var parser = new UAParser();
   parser.setUA(req.headers['user-agent']);
-  var lang = req.headers['accept-language'].split(',')[0] || null;
-  return { 'ip': ip, 'os': parser.getOS(), 'lang': lang };
+  var lang = req.headers['accept-language'];
+  lang = lang ? lang.split(',')[0] : '';
+  var result = { 'ip': ip, 'os': parser.getOS(), 'lang': lang };
+  return result;
 }
 
 
